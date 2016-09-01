@@ -83,7 +83,7 @@
     
     [_webImageView setImageWithURL:url
                        placeholder:nil
-                           options:YYWebImageOptionProgressiveBlur | YYWebImageOptionShowNetworkActivity | YYWebImageOptionSetImageWithFadeAnimation
+                           options:YYWebImageOptionProgressiveBlur |YYWebImageOptionSetImageWithFadeAnimation
                           progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                               if (expectedSize > 0 && receivedSize > 0) {
                                   CGFloat progress = (CGFloat)receivedSize / expectedSize;
@@ -219,7 +219,7 @@
         CGFloat y = cell.centerY - scrollView.contentOffset.y;
         CGFloat p = y - viewHeight / 2;
         CGFloat scale = cos(p / viewHeight * 0.8) * 0.95;
-        if (kiOS8Later) {
+        if (kSystemVersion >= 8) {
             [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
                 cell.webImageView.transform = CGAffineTransformMakeScale(scale, scale);
             } completion:NULL];
